@@ -68,12 +68,26 @@ function setupGUI() {
 }
 
 async function enterAR() {
-    if (renderer.xr.isPresenting) {
-        await renderer.xr.end();
-    } else {
-        const session = await navigator.xr.requestSession('immersive-ar');
-        renderer.xr.setSession(session);
-    }
+  // Check if WebXR is supported
+  if (!navigator.xr) {
+      console.error("WebXR not supported in this browser.");
+      return;
+  }
+
+  const session = renderer.xr.getSession();
+
+  if (session) {
+      // If a session exists, end it
+      await session.end();
+  } else {
+      // If no session exists, request a new AR session
+      try {
+          const newSession = await navigator.xr.requestSession('immersive-ar');
+          renderer.xr.setSession(newSession);
+      } catch (error) {
+          console.error("Failed to start AR session:", error);
+      }
+  }
 }
 
 function animate() {
