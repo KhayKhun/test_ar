@@ -1,0 +1,13 @@
+body {
+  overflow: hidden;
+  margin: 0px;
+  background-color: black;
+}
+#enter-ar{
+  background-color: white;
+  color: black;
+  padding: 20px;
+  position: fixed;
+  top: 20%;
+  left: 20%;
+}
