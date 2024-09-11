@@ -85,7 +85,8 @@ async function enterAR() {
           const newSession = await navigator.xr.requestSession('immersive-ar');
           renderer.xr.setSession(newSession);
       } catch (error) {
-          console.error("Failed to start AR session:", error);
+          alert("Failed to start AR session:");
+          console.log(error)
       }
   }
 }
