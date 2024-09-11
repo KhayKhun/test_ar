@@ -70,7 +70,7 @@ function setupGUI() {
 async function enterAR() {
   // Check if WebXR is supported
   if (!navigator.xr) {
-      console.error("WebXR not supported in this browser.");
+      alert("WebXR not supported in this browser.");
       return;
   }
 
